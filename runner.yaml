@@ -1,0 +1,17 @@
+- name: run a docker container
+  hosts: all
+  tasks:
+    - name: Create a data container
+      community.docker.docker_container:
+        name: "{{ item }}"
+        image: pavanidevops78/kubernetes:runner
+        state: started
+        recreate: true
+        env:
+          URL: "{{ URL }}"
+          TOKEN: "{{ TOKEN }}"
+          NAME: "{{ NAME }}"
+      loop:
+        - runner1
+        - runner2
+        - runner3

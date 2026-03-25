@@ -28,7 +28,7 @@ resource "null_resource" "provisioner" {
     inline = [
       "sudo dnf install python3.11-pip -y",
       "sudo pip3.11 install ansible",
-      "ansible-pull -i localhost, -U https://github.com/pdevops87/github-actions-ci roboshop.yaml -e ORG=${each.key} -e TOKEN=${var.TOKEN} -e NAME=${var.NAME}"
+      "ansible-pull -i localhost, -U https://github.com/pdevops87/github-actions-ci runner.yaml -e ORG=${each.key} -e TOKEN=${var.TOKEN} -e NAME=${var.NAME}"
     ]
   }
 }
