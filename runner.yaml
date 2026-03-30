@@ -1,6 +1,13 @@
 - name: run a docker container
   hosts: all
   tasks:
+    - name: install python requests
+      ansible.builtin.pip:
+        name:
+         - requests
+         - docker
+        executable: pip3.9
+
     - name: Create a data container
       community.docker.docker_container:
         name: "{{ item }}"
