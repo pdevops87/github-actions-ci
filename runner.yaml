@@ -1,5 +1,5 @@
 - name: run a docker container
-  hosts: all
+  hosts: localhost
   tasks:
     - name: install python requests
       ansible.builtin.pip:
