@@ -1,7 +1,8 @@
 FROM                 docker.io/redhat/ubi9
 RUN                  dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
-RUN                  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-                     install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+RUN                  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
+                     && chmod +x kubectl \
+                     && mv kubectl /usr/local/bin/kubectl
 RUN                  dnf install -y docker-ce-cli libicu
 RUN                  dnf clean all
 RUN                  groupadd  docker || true
