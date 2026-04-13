@@ -1,6 +1,7 @@
 FROM                 docker.io/redhat/ubi9
 RUN                  dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
-RUN                  dnf install -y docker-ce-cli libicu
+COPY                 kubectl.repo  /etc/yum.repos.d/kubernetes.repo
+RUN                  dnf install -y docker-ce-cli libicu kubectl
 RUN                  dnf clean all
 RUN                  groupadd  docker || true
 RUN                  useradd -m runner
